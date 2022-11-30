@@ -3,5 +3,5 @@ def on_button_pressed_a():
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_b():
-    music.play_melody("F#5:1 - F#5:1 - F#5:2 - E5:1 - E5:1 - E5:2 - F#5:6 - F#5:2 - F#5:2 E5:2 - E5:1 - E5:8 - F#5:2 - F#5:2 - E5:1 - E5:1 - E5:2 - F#5:6 - F#5:1 - F#5:1 - F#5:1 - E5:2 - E5:1 - E5:1 D5:1 B4:6 - F#5:1 - F#5:1 - F#5:2 - E5:1 - D5:1 - D5:2 - F#5:6 - D5:1 - F#5:1 - F#5:1 - F#5:2 - E5:1 - D5:1 - D5:6 - E5:1 - E5:1 - E5:1 - E5:1 - E5:1 - E5:1 - D5:1 - E5:2 - D5:1 - F#5:9 - F#5:1 - F#5:1 - F#5:1 - F#5:2 E5:1 - E5:1 - F#5:8", 144)
+    music.play_melody("F#5:1 - F#5:1 - F#5:2 - E5:1 - E5:1 - E5:2 - F#5:6 - F#5:2 - F#5:2 E5:2 - E5:1 - E5:8 - F#5:2 - F#5:2 - E5:1 - E5:1 - E5:2 - F#5:6 - F#5:1 - F#5:1 - F#5:1 - E5:2 - E5:1 - E5:1 D5:1 B4:6 - F#5:1 - F#5:1 - F#5:2 - E5:1 - D5:1 - D5:2 - F#5:6 - D5:1 - F#5:1 - F#5:1 - F#5:2 - E5:1 - D5:1 - D5:6 - E5:2 - E5:1 - E5:1 - E5:1 - E5:1 - E5:1 - D5:1 - E5:2 - D5:1 - F#5:9 - F#5:1 - F#5:1 - F#5:1 - F#5:2 E5:2 - E5:2 - F#5:8", 144)
 input.on_button_pressed(Button.B, on_button_pressed_b)
