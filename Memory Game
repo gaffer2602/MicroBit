@@ -1,0 +1,103 @@
+def on_button_pressed_a():
+    global Answer
+    if Cond == 1:
+        Answer = "" + Answer + "A"
+        Check()
+    else:
+        game.game_over()
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def Check():
+    if len(Answer) == Length:
+        if Answer == Question:
+            basic.show_leds("""
+                . . . . #
+                                . . . # .
+                                # . # . .
+                                . # . . .
+                                . . . . .
+            """)
+            game.add_score(1)
+            basic.pause(500)
+            Generate()
+        else:
+            basic.show_leds("""
+                # . . . #
+                                . # . # .
+                                . . # . .
+                                . # . # .
+                                # . . . #
+            """)
+            game.game_over()
+
+def on_button_pressed_ab():
+    Generate()
+input.on_button_pressed(Button.AB, on_button_pressed_ab)
+
+def on_button_pressed_b():
+    global Answer
+    if Cond == 1:
+        Answer = "" + Answer + "B"
+        Check()
+    else:
+        game.game_over()
+input.on_button_pressed(Button.B, on_button_pressed_b)
+
+def Generate():
+    global Answer, Question, Length, Cond, RandNum, AB, Level
+    basic.show_leds("""
+        # # # # #
+                # . . . #
+                # . # . #
+                # . . . #
+                # # # # #
+    """)
+    basic.pause(50)
+    Answer = ""
+    Question = ""
+    Length = 2 + (Level - 1) * 2
+    Cond = 1
+    for index in range(Length):
+        RandNum = randint(1, 2)
+        Cond = 0
+        if RandNum == 1:
+            AB = "A"
+        else:
+            AB = "B"
+        if game.is_game_over():
+            break
+        basic.show_string("" + (AB))
+        basic.pause(Delay)
+        basic.show_leds("""
+            . . . . .
+                        . . . . .
+                        . . . . .
+                        . . . . .
+                        . . . . .
+        """)
+        Question = "" + Question + AB
+    if not (game.is_game_over()):
+        Level += 1
+        if Delay >= 50:
+            AB += -50
+        Cond = 1
+        basic.show_string("?")
+AB = ""
+RandNum = 0
+Question = ""
+Length = 0
+Answer = ""
+Cond = 0
+Delay = 0
+Level = 0
+led.set_brightness(25)
+basic.show_leds("""
+    . . . . .
+        . # . # .
+        # # . # #
+        . # . # .
+        . . . . .
+""")
+Level = 1
+Delay = 500
+game.set_score(0)
