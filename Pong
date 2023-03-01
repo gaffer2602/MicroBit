@@ -18,15 +18,24 @@ ball = game.create_sprite(randint(0, 4), 0)
 directionY = 1
 directionX = randint(-1, 1)
 basic.pause(500)
+sound = 1
 
 def on_forever():
-    global directionY, directionX
+    global directionY, sound, directionX
     ball.change(LedSpriteProperty.X, directionX)
     ball.change(LedSpriteProperty.Y, directionY)
     if ball.is_touching(paddleA) or ball.is_touching(paddleB):
         ball.change(LedSpriteProperty.X, directionX * -1)
         ball.change(LedSpriteProperty.Y, -1)
         directionY = -1
+        if sound == 0:
+            music.play_tone(262, music.beat(BeatFraction.HALF))
+            basic.pause(100)
+            sound = 1
+        elif sound == 1:
+            music.play_tone(131, music.beat(BeatFraction.HALF))
+            basic.pause(100)
+            sound = 0
     else:
         if ball.get(LedSpriteProperty.Y) <= 0:
             directionY = 1
@@ -34,6 +43,8 @@ def on_forever():
         elif ball.get(LedSpriteProperty.Y) >= 4:
             ball.set(LedSpriteProperty.BLINK, 1)
             basic.pause(2000)
+            music.start_melody(music.built_in_melody(Melodies.DADADADUM),
+                MelodyOptions.ONCE)
             game.game_over()
         if ball.get(LedSpriteProperty.X) <= 0:
             directionX = 1
