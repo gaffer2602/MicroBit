@@ -62,7 +62,7 @@ def on_forever():
             ball.set(LedSpriteProperty.BLINK, 1)
             basic.pause(2000)
             ball.set(LedSpriteProperty.BLINK, 0)
-            if game.is_game_over() == True:
+            if game.score() == 0:
                 music.play_melody("B4:1 - B4:1 - B4:1 - B4:5 G4:5 A4:5 B4:4 A4:1 B4:8", 180)
         if ball.get(LedSpriteProperty.X) <= 0:
             directionX = 1
